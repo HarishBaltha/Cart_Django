@@ -1,0 +1,190 @@
+{% extends 'common.html' %}
+{% load static %}
+{% block harish %}
+<!DOCTYPE html>
+    {% include 'navbar.html' %}
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mate+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'images/swiper.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="#">
+    <style type="text/css" rel="stylesheet">
+        .welcome{
+            font-family: 'Mate SC', serif;
+            letter-spacing: 5px;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 40px;
+            font-size: 50px;
+        }
+
+        .para{
+            font-size: 30px;
+            font-weight: normal;
+            padding-top: 0px;
+            text-align: center;
+            font-family: 'Lobster', cursive;
+        }
+
+        .footer{
+            position: fixed;
+            background-color: black;
+            width: 100%;
+            bottom: 0px;
+            padding-top: 0px;
+        }
+
+        .footer1{
+            position: relative;
+            padding-top: 5px;
+            padding-bottom: 10px;
+            float: left;
+            padding-left: 40px;
+            font-size: 17px;
+            color: dodgerblue;
+            font-style: italic;
+        }
+
+        .footer1:hover{
+            color: coral;
+        }
+
+        .footer2{
+            position: relative;
+            padding-top: 5px;
+            padding-bottom: 10px;
+            float: right;
+            padding-right: 70px;
+            font-size: 17px;
+            color: dodgerblue;
+        }
+
+        .footer2:hover{
+            color: coral;
+        }
+
+        .swiper-container {
+            position: relative;
+            width: 100%;
+            height: 330px;
+            border-radius: 10px;
+            bottom: 0px;
+            float: left;
+            left: 0px;
+            display: flex;
+            opacity: 100%;
+          }
+
+          .swiper-slide img{
+            width: 100%;
+            height: 100%;
+          }
+
+          .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+          }
+
+
+        @media screen and (max-width:700px){
+
+            .welcome{
+                text-align: center;
+                padding-top: 40px;
+                font-size: 20px;
+            }
+
+            .para{
+                font-size: 15px;
+                font-weight: normal;
+            }
+
+            .swiper-container {
+                height: 200px;
+                margin-top: 50px;
+              }
+
+            .footer1{
+                padding-left: 20px;
+            }
+
+            .footer2{
+                display: none;
+            }
+
+
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="head">
+        <h1 class="welcome">WELCOME  TO  HARI  HARA  SHOPPING  MART</h1>
+        <p class="para">We Believe to make our Customers Satisfy and Happy</p>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="{% static 'images/WD3.jpg' %}"></div>
+          <div class="swiper-slide"><img src="{% static 'images/Men1.jpg' %}"></div>
+          <div class="swiper-slide"><img src="{% static 'images/Saree1.jpg' %}"></div>
+          <div class="swiper-slide"><img src="{% static 'images/Kid1.jpg' %}"></div>
+          <div class="swiper-slide"><img src="{% static 'images/Women1.jpg' %}"></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    <script type="text/javascript" src="{% static 'images/swiper.min.js' %}"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+          spaceBetween: 30,
+          centeredSlides: true,
+          autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+    </script>
+    <div class="footer">
+        <a href="{% url 'admin_login' %}"><section class="footer1"><i class="fa fa-user-circle" aria-hidden="true">Admin</i></section></a>
+        <section class="footer1"><i class="fa fa-instagram"  aria-hidden="true"></i></section>
+        <section class="footer1"><i class="fa fa-facebook-square" aria-hidden="true"></i></section>
+        <section class="footer1"><i class="fa fa-twitter" aria-hidden="true"></i></section>
+        <section class="footer1"><i class="fa fa-google-plus" aria-hidden="true"></i></section>
+        <section class="footer1"><i class="fa fa-linkedin" aria-hidden="true"></i></section>
+        <section class="footer2">Whole Ads by | Harish</section>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

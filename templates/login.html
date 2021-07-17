@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        body{
+            background-color: lavender;
+        }
+
+        .head{
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .user1{
+            margin: 30px auto;
+            width: 30%;
+            border-bottom: 2px solid;
+            padding-top: 20px;
+            padding-bottom: 5px;
+            color: rgba(0,0,0,0.3);
+        }
+
+        .user1 input{
+            width: 50%;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: black;
+        }
+
+        ::placeholder{
+            color: rgba(0,0,0,0.5);
+            font-size: 17px;
+            font-weight: bold;
+            padding-left: 20px;
+        }
+
+        .butt{
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .login-button{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            background-color: dodgerblue;
+        }
+
+        .login-button :hover{
+            background-color: whitesmoke;
+            color: black;
+        }
+
+        .reg{
+            text-align: center;
+            padding-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .reg1{
+            position: relative;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            margin-left: 10px;
+            padding: 7px 22px;
+            border: 1px solid black;
+            border-radius: 15px;
+            margin-top: 100px;
+        }
+
+        .reg1:hover{
+            background-color: dodgerblue;
+            border: none;
+            color: whitesmoke;
+        }
+
+        .error{
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            padding-top: 10px;
+            color: dodgerblue;
+        }
+
+        .log{
+            text-align: center;
+            position: relative;
+            padding-top: 25px;
+            padding-left: 25px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .home{
+            position: relative;
+            font-size: 20px;
+            color: black;
+            text-decoration: none;
+            margin-right: 10px;
+            padding: 7px 22px;
+            border: 1px solid black;
+            border-radius: 15px;
+        }
+
+        .home:hover{
+            background-color: dodgerblue;
+            color: whitesmoke;
+            border: none;
+        }
+
+        .twitter{
+            position: relative;
+            text-align: center;
+        }
+
+        @media screen and (max-width:1000px){
+            .user1{
+                width: 90%;
+                border-bottom: 2px solid;
+                padding-top: 15px;
+                padding-bottom: 5px;
+            }
+
+            .user1 input{
+                padding-left: 20px;
+                width: 90%;
+            }
+
+            .head{
+                font-size: 30px;
+                padding-top: 60px;
+            }
+
+            ::placeholder{
+                color: rgba(0,0,0,0.8);
+                font-size: 15px;
+                font-weight: normal;
+            }
+
+            .butt{
+                text-align: center;
+                padding-top: 20px;
+            }
+
+            .login-button{
+                font-size: 15px;
+                font-weight: normal;
+                color: white;
+                border-radius: 8px;
+                background-color: dodgerblue;
+            }
+
+            .reg1{
+                font-size: 15px;
+                font-weight: normal;
+            }
+
+            .log{
+                padding-left: 20px;
+            }
+
+            .home{
+                font-size: 15px;
+                font-weight: normal;
+            }
+
+            .para{
+                font-size: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Login</title>
+</head>
+<body>
+    <form action="{% url 'login_up' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="main">
+        <div class="main1">
+            <h1 class="head">Login Here Please</h1>
+        </div>
+        <div class="user1">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="text" placeholder="Username" required name="l1">
+        </div>
+        <div class="user1">
+            <i class="fa fa-key" aria-hidden="true"></i>
+            <input type="password" placeholder="Password" required name="l2">
+        </div>
+        <div class="butt">
+            <button type="submit" class="login-button">Login</button>
+        </div>
+        <div class="error">
+            {% if error %}
+                {{ error }}
+            {% endif %}
+        </div>
+        <div class="reg">
+            <p class="para">Don't have an Account ?</p>
+            <a href="{% url 'register' %}" class="reg1">Register Here</a>
+        </div>
+        <div class="log">
+            <a href="{% url 'index' %}" class="home">Main Page</a>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+    <form action="{% url 'save_product' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <tr>
+            <td><input type="text" placeholder="Title" required name="p1"></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="slug" required name="p2"></td>
+        </tr>
+        <tr>
+            <td><select name="p3">
+                    {% for x in data %}
+                        <option value="{{ x.no }}">{{ x.title }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="file" placeholder="Upload Image" required name="p4"></td>
+        </tr>
+        <tr>
+            <td><input type="number" placeholder="Marked_price" required name="p5"></td>
+        </tr>
+        <tr>
+            <td><input type="number" placeholder="Selling_price" required name="p6"></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Description" required name="p7"></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Warranty" required name="p8"></td>
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="Return Policy" required name="p9"></td>
+        </tr>
+    <tr>
+        <td>
+            <button type="submit">Save</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {% for x in messages %}
+                {{ x }}
+            {% endfor %}
+        </td>
+    </tr>
+    </form>
+    </table>
+</body>
+</html>

@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body{
+            background-color: lavender;
+        }
+
+        .register{
+            text-align: center;
+            position: relative;
+        }
+
+        .register2{
+            position: relative;
+            padding-top: 100px;
+            font-weight: bold;
+            font-family: 'Satisfy', cursive;
+        }
+
+        .register3{
+            margin: 30px auto;
+            width: 30%;
+            border-bottom: 2px solid;
+            padding-top: 20px;
+            padding-bottom: 5px;
+            color: rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .register3 input{
+            width: 80%;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: black;
+        }
+
+        ::placeholder{
+            color: rgba(0,0,0,0.5);
+            font-size: 17px;
+            font-weight: bold;
+            padding-left: 20px;
+        }
+
+        .butt1{
+            padding-top: 20px;
+            position: relative;
+        }
+
+        .button1{
+            position: relative;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            background-color: dodgerblue;
+        }
+
+        .log{
+            position: relative;
+            padding-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .log1{
+            position: relative;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            margin-left: 10px;
+            padding: 7px 22px;
+            border: 1px solid black;
+            border-radius: 15px;
+            margin-top: 100px;
+        }
+
+        .log1:hover{
+            background-color: dodgerblue;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .message{
+            position: relative;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            padding-top: 10px;
+        }
+
+
+        .home{
+            position: relative;
+            font-size: 20px;
+            color: black;
+            text-decoration: none;
+            margin-right: 10px;
+            padding: 7px 22px;
+            border: 1px solid black;
+            border-radius: 15px;
+        }
+
+        .home:hover{
+            background-color: dodgerblue;
+            color: white;
+            border: 1px solid white;
+        }
+
+        @media screen and (max-width:411px){
+            .register3{
+                width: 90%;
+                border-bottom: 2px solid;
+                padding-top: 20px;
+                padding-bottom: 5px;
+            }
+
+            .register3 input{
+                padding-left: 20px;
+                width: 100%;
+            }
+
+            .register3 .fa{
+                display: none;
+            }
+
+            .button1{
+                font-size: 15px;
+                font-weight: normal;
+            }
+
+            ::placeholder{
+                color: rgba(0,0,0,0.8);
+                font-size: 15px;
+                font-weight: normal;
+                padding-left: 20px;
+            }
+
+            .log{
+                font-size: 15px;
+                font-weight: normal;
+            }
+
+            .log1{
+                font-size: 15px;
+            }
+
+            .home{
+                font-size: 16px;
+            }
+        }
+
+    </style>
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<form action="{% url 'register_up' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="register">
+    <div class="register1">
+        <h1 class="register2">Register Here Please</h1>
+    </div>
+    <div class="register3">
+        <i class="fa fa-genderless"></i>
+        <input type="text" placeholder="Name" required name="r1">
+    </div>
+    <div class="register3">
+        <i class="fa fa-genderless"></i>
+        <input type="text" placeholder="Username" required name="r2">
+    </div>
+    <div class="register3">
+        <i class="fa fa-genderless"></i>
+        <input type="email" placeholder="Email Id" required name="r3">
+    </div>
+    <div class="register3">
+        <i class="fa fa-genderless"></i>
+        <input type="number" placeholder="Contact Number" maxlength="10" required name="r4">
+    </div>
+    <div class="register3">
+        <i class="fa fa-genderless"></i>
+        <input type="password" placeholder="Password" required name="r5">
+    </div>
+    <div class="register3">
+        <input type="text" placeholder="Address" required name="r6">
+    </div>
+    <div class="butt1">
+        <button type="submit" class="button1">Sign Up</button>
+    </div>
+    <div class="message">
+        {% for x in messages %}
+            {{ x }}
+        {% endfor %}
+        {% if error6 %}
+            {{ error6 }}
+        {% endif %}
+        {% if error %}
+            {{ error }}
+        {% endif %}
+        {% if error1 %}
+            {{ error1 }}
+        {% endif %}
+        {% if error2 %}
+            {{ error2 }}
+        {% endif %}
+        {% if error3 %}
+            {{ error3 }}
+        {% endif %}
+        {% if error4 %}
+            {{ error4 }}
+        {% endif %}
+        {% if error5 %}
+            {{ error5 }}
+        {% endif %}
+    </div>
+    <div class="log">
+        <p>Already have an Account? </p>
+    </div>
+    <div class="log">
+        <a href="{% url 'index' %}" class="home">Main Page</a><a href="{% url 'login' %}" class="log1">Login Here</a>
+    </div>
+    <br><br><br>
+</div>
+</form>
+</body>
+</html>

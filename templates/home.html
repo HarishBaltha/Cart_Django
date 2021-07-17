@@ -1,0 +1,38 @@
+{% extends "common.html" %}
+{% load static %}
+{% block harish %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Title</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+    <table>
+        <form action="{% url 'category_save' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <tr>
+                <td><input type="text" placeholder="Title" required name="c1"></td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="Slug-Item" required name="c2"></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Save</button></td>
+            </tr>
+            <tr>
+                <td>
+                    {% for x in messages %}
+                        {{ x }}
+                    {% endfor %}
+                </td>
+            </tr>
+        </form>
+    </table>
+</body>
+</html>
+{% endblock %}

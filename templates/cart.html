@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<br>
+<br>
+<table align="center" border="1">
+{% for x in data1 %}
+    <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Design</th>
+        <th>Pic</th>
+        <th>Cost</th>
+        <th>Cart items</th>
+        <th></th>
+        <th>View</th>
+    </tr>
+    <tr>
+        <td>{{ x.No }}</td>
+        <td>{{ x.Name }}</td>
+        <td>{{ x.Design }}</td>
+        <td>{{ x.File }}</td>
+        <td>{{ total }}</td>
+        <td>Cookies: {{ data2 }}</td>
+        <td>
+
+        </td>
+        <td><a href="{% url 'show' %}">To view</a></td>
+    </tr>
+    {% for x in messages %}
+        {{ x }}
+    {% endfor %}
+{% endfor %}
+</table>
+</body>
+</html>

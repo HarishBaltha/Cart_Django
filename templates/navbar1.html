@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css" rel="stylesheet">
+        .navbar-nav{
+            position: relative;
+            margin-left: 700px;
+
+        }
+        .navbar-nav .btn{
+            position: relative;
+            margin-right: 10px;
+            color: white;
+            border: none;
+        }
+
+        @media screen and (max-width:1030px){
+            .navbar-nav{
+                margin-left: 0px;
+            }
+        }
+    </style>
+    <title>Title</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="btn btn-outline-primary" aria-current="page" href="#">Home</a>
+        <a class="btn btn-outline-primary" href="#">About us</a>
+        <a class="btn btn-outline-primary" href="{% url 'mycart' %}"><i class="fa fa-shopping-cart" aria-hidden="true"> Cart</i></a>
+        <a class="btn btn-outline-primary" href="{% url 'profile' %}?un={{ name }}">Profile</a>
+        <a class="btn btn-outline-primary" href="{% url 'allproducts' %}">Categories</a>
+        <a class="btn btn-outline-primary" href="{% url 'index' %}">Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>
+</body>
+</html>
