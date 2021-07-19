@@ -117,8 +117,9 @@
             border: none;
         }
 
-        .twitter{
+        .forget{
             position: relative;
+            text-decoration: none;
             text-align: center;
         }
 
@@ -195,6 +196,9 @@
         <div class="user1">
             <i class="fa fa-key" aria-hidden="true"></i>
             <input type="password" placeholder="Password" required name="l2">
+        </div>
+        <div class="forget">
+            <a href="{% url 'forget' %}" style="text-decoration: none;">Forget Password?</a>
         </div>
         <div class="butt">
             <button type="submit" class="login-button">Login</button>

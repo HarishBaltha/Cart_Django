@@ -64,18 +64,21 @@ def login_up(request):
     except LoginModel.DoesNotExist:
         return render(request, "login.html", {"error": "Username and Password doesn't match"})
 
-def admins(request):
-    return render(request, "Admin.html")
+def forget(request):
+    return render(request, "forget.html")
 
-def admin_up(request):
-    no = request.POST.get("d1")
-    name = request.POST.get("d2")
-    design = request.POST.get("d3")
-    upload = request.FILES["d4"]
-    cost = request.POST.get("d5")
-    AdminModel(No=no, Name=name, Design=design, File=upload, Cost=cost).save()
-    messages.success(request, "Uploades Successfully")
-    return render(request, "Admin.html")
+def show_password(request):
+    username = request.POST.get("f1")
+    mobile = request.POST.get("f2")
+    secret = request.POST.get("f3")
+    try:
+        password = RegisterModel.objects.get(Username=username, Contact=mobile, Secret_Info=secret)
+        return render(request, "forget.html", {"password": password})
+    except RegisterModel.DoesNotExist:
+        return render(request, "forget.html", {"alert": "Invalid Details"})
+
+def secret(request):
+    return render(request, "secret.html")
 
 def homes(request):
     return render(request, "homes.html")

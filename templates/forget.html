@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Title</title>
+    <style type="text/css">
+        body{
+            background-color: lavender;
+        }
+
+        .forget{
+            text-align: center;
+            position: relative;
+        }
+
+        .forget2{
+            position: relative;
+            padding-top: 100px;
+            font-weight: bold;
+            font-family: 'Satisfy', cursive;
+        }
+
+        .forget3{
+            margin: 30px auto;
+            width: 30%;
+            border-bottom: 2px solid;
+            padding-top: 20px;
+            padding-bottom: 5px;
+            color: rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .forget3 input{
+            width: 80%;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: black;
+        }
+
+        ::placeholder{
+            color: rgba(0,0,0,0.5);
+            font-size: 17px;
+            font-weight: bold;
+            padding-left: 20px;
+        }
+
+        .butt1{
+            padding-top: 20px;
+            position: relative;
+        }
+
+        .button1{
+            position: relative;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            background-color: dodgerblue;
+        }
+
+        @media screen and (max-width:411px) {
+            .forget3 {
+                width: 90%;
+                border-bottom: 2px solid;
+                padding-top: 20px;
+                padding-bottom: 5px;
+            }
+
+            .forget3 input {
+                padding-left: 20px;
+                width: 100%;
+            }
+
+            .forget3 .fa {
+                display: none;
+            }
+
+            .button1 {
+                font-size: 15px;
+                font-weight: normal;
+            }
+
+            ::placeholder {
+                color: rgba(0, 0, 0, 0.8);
+                font-size: 15px;
+                font-weight: normal;
+                padding-left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="{% url 'show_password' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="forget">
+            <div class="forget1">
+                <h1 class="forget2">Fill-up Details Please</h1>
+            </div>
+            <div class="forget3">
+                <i class="fa fa-genderless"></i>
+                <input type="text" placeholder="UserName" required name="f1">
+            </div>
+            <div class="forget3">
+                <i class="fa fa-genderless"></i>
+                <input type="number" placeholder="Mobile Number" required name="f2">
+            </div>
+            <div class="forget3">
+                <i class="fa fa-genderless"></i>
+                <input type="text" placeholder="Secret Info" required name="f3">
+            </div>
+            <a href="{% url 'secret' %}">Secret Info?</a>
+            <div class="butt1">
+                <button type="submit" class="button1">Show Password</button>
+            </div>
+            <div class="password">
+                {% if password %}
+                    Your Password is: {{ password.Password }}
+                {% else %}
+                    {{ alert }}
+                {% endif %}
+            </div>
+        </div>
+    </form>
+</body>
+</html>
