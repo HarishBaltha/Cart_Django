@@ -19,6 +19,7 @@ def register_up(request):
     contact = request.POST.get("r4")
     password = request.POST.get("r5")
     address = request.POST.get("r6")
+    secret = request.POST.get("r7")
     match = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     match1 = "abcdefghijklmnopqrstuvwxyz"
     integer = "1234567890"
@@ -34,7 +35,7 @@ def register_up(request):
                                     if len(str(password)) > 7 and len(str(password)) < 17:
                                         if len(str(contact)) == 10:
                                             RegisterModel(Name=name, Username=username, Email=mail, Contact=contact,
-                                                Password=password, Address=address).save()
+                                                Password=password, Address=address, Secret_Info=secret).save()
                                             LoginModel(Username=username, Password=password).save()
                                             messages.success(request, "Registered Successfully")
                                             return redirect("register")

@@ -10,6 +10,7 @@ class RegisterModel(models.Model):
     Address = models.CharField(max_length=120, null=True, blank=True)
     Joined_on = models.DateTimeField(auto_now_add=True)
     Password=models.CharField(max_length=15, unique=True)
+    Secret_Info = models.CharField(max_length=200)
 
     def __str__(self):
         return self.Username
