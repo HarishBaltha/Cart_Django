@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
     <style type="text/css" rel="stylesheet">
         .navbar-nav{
             position: relative;
-            margin-left: 700px;
+            margin-left: 600px;
 
         }
         .navbar-nav .btn{
@@ -27,7 +28,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <img src="{% static 'images/Harish_logo1-removebg-preview.png' %}" style="height: 55px; width: 95px; font-weight: bold">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -35,9 +36,9 @@
       <div class="navbar-nav">
         <a class="btn btn-outline-primary" aria-current="page" href="#">Home</a>
         <a class="btn btn-outline-primary" href="#">About us</a>
-        <a class="btn btn-outline-primary" href="{% url 'mycart' %}"><i class="fa fa-shopping-cart" aria-hidden="true"> Cart</i></a>
         <a class="btn btn-outline-primary" href="{% url 'profile' %}?un={{ name }}">Profile</a>
-        <a class="btn btn-outline-primary" href="{% url 'allproducts' %}">Categories</a>
+        <a class="btn btn-outline-primary" href="{% url 'allproducts' %}">View Categories</a>
+          <a class="btn btn-outline-primary" href="{% url 'mycart' %}"><i class="fa fa-shopping-cart" aria-hidden="true"> Cart</i></a>
         <a class="btn btn-outline-primary" href="{% url 'index' %}">Logout</a>
       </div>
     </div>

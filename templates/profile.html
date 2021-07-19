@@ -14,40 +14,35 @@
             text-align: center;
         }
 
-        .container{
+        .user{
             position: relative;
-            margin-top: 50px;
             text-align: center;
+            color: dodgerblue;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-<div class="head">
-    <h2>Welcome {{ name|capfirst }}</h2>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email Id</th>
-                        <th>Contact No</th>
-                        <th>Address</th>
-                        <th>Joined On</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ profile.Name }}</td>
-                        <td>{{ profile.Email }}</td>
-                        <td>{{ profile.Contact }}</td>
-                        <td>{{ profile.Address }}</td>
-                        <td>{{ profile.Joined_on }}</td>
-                    </tr>
-                </tbody>
-            </table>
+<div class="main">
+    <div class="head">
+        <h2 style="font-size: 40px; font-weight: bold;">Welcome {{ name|capfirst }}</h2>
+    </div>
+    <hr>
+    <div class="user">
+        <div class="user1">
+            <h4><span style="color: black">Name:</span> {{ profile.Name }}</h4>
+        </div>
+        <div class="user1">
+            <h4><span style="color: black">Email Id:</span> {{ profile.Email }}</h4>
+        </div>
+        <div class="user1">
+            <h4><span style="color: black">Mobile Number:</span> {{ profile.Contact }}</h4>
+        </div>
+        <div class="user1">
+            <h4><span style="color: black">Address Details:</span> {{ profile.Address }}</h4>
+        </div>
+        <div class="user1">
+            <h4><span style="color: black">Joined On:</span> {{ profile.Joined_on }}</h4>
         </div>
     </div>
 </div>

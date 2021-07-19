@@ -3,6 +3,7 @@ from Appshop.models import RegisterModel, LoginModel, AdminModel, Category, Cart
 from django.contrib import messages
 from django.views.generic import TemplateView, DetailView, View, CreateView
 from Appshop.forms import CheckoutForm
+from django.core.paginator import Paginator
 
 
 def index(request):
@@ -57,7 +58,6 @@ def login(request):
 def login_up(request):
     username = request.POST.get("l1")
     password = request.POST.get("l2")
-    view = AdminModel.objects.all()
     try:
         LoginModel.objects.get(Username=username, Password=password)
         return render(request, "homes.html", {"data2": Product.objects.all(), "name": username})
