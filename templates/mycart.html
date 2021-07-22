@@ -2,58 +2,67 @@
 {% load static %}
 {% block harish %}
 <!DOCTYPE html>
+    {% include "navbar1.html" %}
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Title</title>
+    <style>
+        .Items{
+            position: relative;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .Item1{
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .Item2{
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .Item3{
+            position: relative;
+            margin-top: 30px;
+        }
+
+        .Item4{
+            position: relative;
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-10">
-            <h4>Items in my Cart</h4>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>SN</th>
-                        <th>Product</th>
-                        <th>Rate</th>
-                        <th>Quantity</th>
-                        <th>Subtotal</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for cp in cart.cartproduct_set.all %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td>{{ cp.product.title }}</td>
-                        <td>{{ cp.rate }}</td>
-                        <td>{{ cp.quantity }}</td>
-                        <td>{{ cp.subtotal }}</td>
-                        <td>
-                            <a href="{% url 'managecart' cp.id %}?action=inc" class="btn btn-outline-success">Increase(+)</a>
-                            <a href="{% url 'managecart' cp.id %}?action=dcr" class="btn btn-outline-info">Decrease(-)</a>
-                            <a href="{% url 'managecart' cp.id %}?action=rmv" class="btn btn-outline-danger">Remove(x)</a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                    <tr>
-                        <th colspan="4" class="text-right">Cost</th>
-                        <th>Total: Rs. {{ cart.total }}</th>
-                    </tr>
-                    <tr>
-                        {% if cart.cartproduct_set.all %}
-                            <th><a href="{% url 'emptycart' %}">Clear Cart</a></th>
-                        {% endif %}
-                        {% if cart.cartproduct_set.all %}
-                            <th><a href="#">Checkout</a></th>
-                        {% endif %}
-                    </tr>
-                </tbody>
-            </table>
+<div class="Items">
+<h4 style="font-size: 40px;">Items in my Cart</h4>
+    {% for cp in cart.cartproduct_set.all %}
+        <div class="Item1">
+            <div><span style="font-weight: bold">S.No:</span> <span>{{ forloop.counter }}</span></div>
+            <div><span style="font-weight: bold">Brand:</span> <span style="font-style: italic">{{ cp.product.title }}</span></div>
+            <div><span style="font-weight: bold">Cost of Product:</span> <span style="font-style: oblique">{{ cp.rate }}</span></div>
+            <div><span style="font-weight: bold">Quantities Added:</span> <span style="font-style: oblique">{{ cp.quantity }}</span></div>
+            <div><span style="font-weight: bold">SubTotal Cost:</span> <span style="font-style: oblique">{{ cp.subtotal }}</span></div>
         </div>
+        <div class="Item2">
+            <a href="{% url 'managecart' cp.id %}?action=inc" class="btn btn-outline-success">Increase(+)</a>
+            <a href="{% url 'managecart' cp.id %}?action=dcr" class="btn btn-outline-info">Decrease(-)</a>
+            <a href="{% url 'managecart' cp.id %}?action=rmv" class="btn btn-outline-danger">Remove(x)</a>
+        </div>
+    {% endfor %}
+    <div class="Item3">
+        Total: <span style="font-style: oblique; font-weight: bold">Rs. {{ cart.total }}</span>
+    </div>
+    <div class="Item4">
+        {% if cart.cartproduct_set.all %}
+            <a href="{% url 'emptycart' %}" class="btn btn-outline-primary">Clear Cart</a>
+        {% endif %}
+        {% if cart.cartproduct_set.all %}
+            <a href="#" class="btn btn-outline-primary">CheckOut</a>
+        {% endif %}
     </div>
 </div>
 </body>
